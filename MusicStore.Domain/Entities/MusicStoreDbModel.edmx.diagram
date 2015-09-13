@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="209c0bf61ce748b18a0b6c83dd17e537" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="Model.AcusticDrum" Width="1.5" PointX="20.25" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.AcusticGuitar" Width="1.5" PointX="26.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DigitalPiano" Width="1.5" PointX="27.125" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ElectroAndBassGuitar" Width="1.5" PointX="26.5" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ElectroDrum" Width="1.5" PointX="17" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Guitar" Width="1.5" PointX="22" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Keyboard" Width="1.5" PointX="24.375" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Synthesizer" Width="1.5" PointX="27.125" PointY="15.5" IsExpanded="true" />
+        <InheritanceConnector EntityType="Model.AcusticGuitar" />
+        <InheritanceConnector EntityType="Model.ElectroAndBassGuitar" />
+        <InheritanceConnector EntityType="Model.DigitalPiano" />
+        <InheritanceConnector EntityType="Model.Synthesizer" />
+        <AssociationConnector Association="Model.customerorder" />
+        <EntityTypeShape EntityType="Model.Address" Width="1.5" PointX="4.875" PointY="13.625" />
+        <EntityTypeShape EntityType="Model.Delivary" Width="1.5" PointX="7.75" PointY="13.875" />
+        <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="9.25" PointY="10.75" />
+        <EntityTypeShape EntityType="Model.PaymentType" Width="1.5" PointX="12" PointY="15.75" />
+        <AssociationConnector Association="Model.fk_PaymentTypes_Order1" ManuallyRouted="false" >
+        </AssociationConnector>
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="16.25" PointY="11.875" />
+        <AssociationConnector Association="Model.orderproduct" />
+        <InheritanceConnector EntityType="Model.Guitar" />
+        <InheritanceConnector EntityType="Model.Keyboard" />
+        <InheritanceConnector EntityType="Model.ElectroDrum" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="Model.AcusticDrum" ManuallyRouted="true" >
+          <ConnectorPoint PointX="17" PointY="15.009095052083332" />
+          <ConnectorPoint PointX="17" PointY="15.875" />
+          <ConnectorPoint PointX="21" PointY="15.875" />
+          <ConnectorPoint PointX="21" PointY="16.25" />
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="Model.productcategory" Width="1.5" PointX="15.75" PointY="9.375" />
+        <AssociationConnector Association="Model.fk_Product_ProductCategory1" />
+        <EntityTypeShape EntityType="Model.genericcategory" Width="1.5" PointX="13.5" PointY="9.625" />
+        <AssociationConnector Association="Model.fk_ProductCategory_GenericCategory1" />
+        <EntityTypeShape EntityType="Model.Color" Width="1.5" PointX="14.25" PointY="13.375" />
+        <EntityTypeShape EntityType="Model.Producer" Width="1.5" PointX="14.25" PointY="15.75" />
+        <AssociationConnector Association="Model.fk_Product_Color1" />
+        <AssociationConnector Association="Model.fk_Product_Producer1" />
+        <EntityTypeShape EntityType="Model.city" Width="1.5" PointX="18.625" PointY="6.375" />
+        <EntityTypeShape EntityType="Model.slides" Width="1.5" PointX="9.375" PointY="17.25" />
+        <AssociationConnector Association="Model.fk_Delivary_Order1" />
+        <AssociationConnector Association="Model.AddressDelivary" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="Model.User" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="Model.UserClaim" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.UserLogin" Width="1.5" PointX="5.375" PointY="7.875" />
+        <AssociationConnector Association="Model.ApplicationUser_Claims" />
+        <AssociationConnector Association="Model.ApplicationUser_Logins" />
+        <AssociationConnector Association="Model.userrole" />
+        <EntityTypeShape EntityType="Model.UserPhone" Width="1.5" PointX="3" PointY="14.375" />
+        <AssociationConnector Association="Model.fk_UserPhone_User1" />
+        <AssociationConnector Association="Model.AddressUser" />
+        <AssociationConnector Association="Model.OrderUser" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

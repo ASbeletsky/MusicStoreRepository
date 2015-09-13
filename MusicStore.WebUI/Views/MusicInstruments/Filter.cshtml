@@ -1,0 +1,78 @@
+﻿@using MusicStore.WebUI.Models.MusicInstruments;
+@using MusicStore.WebUI.Models.MusicInstruments.Filter;
+@using MvcCheckBoxList.Model
+
+@model ProductFilter
+
+<div>
+    <div class="row">
+        @using (Html.BeginForm("Filter", "MusicInstruments", FormMethod.Post, new {@id = "FilterForm" }))
+        {
+            <div class="panel panel-default">
+                <!--Производитель-->
+                <div class="panel-heading">
+                    @Html.HiddenFor(x => x.category)
+                    <h6 class="panel-title">Производитель</h6>
+                </div>
+                <div class="panel-body">
+                    <ul class="my_list">
+                        @for (var i = 0; i < Model.producers.Count; i++)
+                        {
+                            var prod = Model.producers[i];                       
+                            <li>                                
+                                @Html.HiddenFor(model => model.producers[i].Id)
+                                @Html.HiddenFor(model => model.producers[i].Name)
+                                @Html.CheckBoxFor(model => model.producers[i].IsChecked, new { @onchange = "f()" })
+                                @Html.LabelFor(model => model.producers[i].Name, prod.Name)  
+                                                                                
+                            </li>
+                            
+                        }
+                    </ul>
+                </div>
+                <!--Цвет-->
+                <div class="panel-heading">
+                    <h6 class="panel-title ">Цвет</h6>
+                </div>
+                <div class="panel-body">
+                    <ul>
+                        @for (var i = 0; i < Model.colors.Count; i++)
+                        {
+                            var color = Model.colors[i];
+                            <li>                              
+                                @Html.HiddenFor(model => model.colors[i].Id)
+                                @Html.HiddenFor(model => model.colors[i].Name)
+                                @Html.CheckBoxFor(model => model.colors[i].IsChecked, new { @onchange = "f()" })
+                                @Html.LabelFor(model => model.colors[i].Name, color.Name)                          
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <!--Цена-->
+                <div class="panel-heading">
+                    <h6 class="panel-title">Цена</h6>
+                </div>
+                <div class="panel-body">
+                    <div class="col-md-4 no_pading">
+                        @Html.TextBoxFor(x => x.minPrice, new { @class = "form-control pull-left", @placeholder = "От" })
+                    </div>
+                    <div class="col-md-offset-1 col-md-4 no_pading">
+                        @Html.TextBoxFor(x => x.maxPrice, new { @class = "form-control", @placeholder = "До" })
+                    </div>
+                    <div class="col-md-offset-1 col-md-2 no_pading">
+                        <input class="btn btn-default" type="submit" value="Ок" />
+                    </div>
+
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+<script>
+    function f() {
+        var form = document.getElementById("FilterForm");
+        form.submit();
+    }
+</script>

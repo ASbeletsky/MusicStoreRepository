@@ -1,0 +1,40 @@
+﻿@using MusicStore.Domain.Entities;
+@using MusicStore.WebUI.Models;
+@model AllCategories
+
+<div class="btn-group ">
+    <a class="btn btn-default" href="@Url.Action("ShowMainPage", "MainPage",null)">
+        <i class="glyphicon glyphicon-home"></i>
+    </a>
+    <a class="btn btn-success" href="#">
+        Каталог товаров
+    </a>
+</div>
+
+<ul class="nav navmenu-nav ">
+  
+    @foreach(var GenericCategory in Model.GenericCategories)
+    {
+        <li class="dropdown dropdown-submenu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@GenericCategory.Name</a>
+            <ul class="dropdown-menu">
+                @foreach (var Category in Model.Categories)
+                {
+                    if (Category.GenericCategory_Id == GenericCategory.Id)
+                    {
+                        @Html.RouteLink(Category.CategoryName, new
+                                    {
+                                        controller = "MusicInstruments",
+                                        action = "ShowListPage",
+                                        category = Category.CategoryId,
+                                        page = 1
+                                    }, new { @class = "btn btn-link btn-block active" });
+                    }
+                }
+            </ul>
+        </li>
+    }
+</ul>
+
+
+    

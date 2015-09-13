@@ -1,0 +1,26 @@
+﻿@using MusicStore.WebUI.Models.MainPage
+@model MainPageViewModel
+
+    <title>@ViewBag.Title</title>
+   <div>
+       @Html.Partial("ContentSlider", Model.SliderContent)
+   </div>
+   <div>
+       @Html.Partial("ShowCatalog", Model.Catalog)
+   </div>
+    <div>
+        <h3>Новинки</h3>
+        @Html.Partial("ShowProducts", Model.NewProducts)
+    </div>
+    <div>
+        <h3>Популярные товары</h3>
+        @Html.Partial("ShowProducts", Model.PopularProducts)
+    </div>
+        
+        
+        
+        
+  
+
+
+

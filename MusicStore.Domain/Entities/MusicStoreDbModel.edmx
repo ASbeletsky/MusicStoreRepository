@@ -1,0 +1,1596 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище Model" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="acusticdrum">
+          <Key>
+            <PropertyRef Name="Instruments_Id" />
+          </Key>
+          <Property Name="Seria" Type="varchar" MaxLength="150" />
+          <Property Name="DrumQuantity" Type="int" />
+          <Property Name="BassDrum" Type="varchar" MaxLength="45" />
+          <Property Name="FloorTom" Type="varchar" MaxLength="45" />
+          <Property Name="FirstTom" Type="varchar" MaxLength="45" />
+          <Property Name="SecondTom" Type="varchar" MaxLength="45" />
+          <Property Name="SnareDrum" Type="varchar" MaxLength="45" />
+          <Property Name="Set" Type="varchar" MaxLength="45" />
+          <Property Name="Material" Type="varchar" MaxLength="45" />
+          <Property Name="Instruments_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="acusticguitars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="TopDeka" Type="varchar" MaxLength="45" />
+          <Property Name="BottomDeka" Type="varchar" MaxLength="45" />
+          <Property Name="Neck" Type="varchar" MaxLength="45" />
+          <Property Name="NeckCover" Type="varchar" MaxLength="45" />
+          <Property Name="Bridge" Type="varchar" MaxLength="45" />
+          <Property Name="Pickup" Type="varchar" MaxLength="45" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City" Type="varchar" MaxLength="45" />
+          <Property Name="Street" Type="varchar" MaxLength="45" />
+          <Property Name="House" Type="varchar" MaxLength="45" />
+          <Property Name="Apartment" Type="int" />
+          <Property Name="User_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="delivary">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="Address_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="digitalpiano">
+          <Key>
+            <PropertyRef Name="Keyboard_Instruments_Id" />
+          </Key>
+          <Property Name="PedalsQuantity" Type="int" />
+          <Property Name="PedalsFunction" Type="varchar" MaxLength="45" />
+          <Property Name="CompositionQuantity" Type="int" />
+          <Property Name="Transponation" Type="bit" />
+          <Property Name="Metronom" Type="varchar" MaxLength="45" />
+          <Property Name="StatyFunction" Type="varchar" MaxLength="45" />
+          <Property Name="Keyboard_Instruments_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="electroandbassguitars">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="NeckMount" Type="varchar" MaxLength="45" />
+          <Property Name="NeckSideView" Type="varchar" MaxLength="45" />
+          <Property Name="StringsThroughtBody" Type="bit" />
+          <Property Name="BodyMaterial" Type="varchar" MaxLength="45" />
+          <Property Name="NeckMaterial" Type="varchar" MaxLength="45" />
+          <Property Name="NeckCoverMaterial" Type="varchar" MaxLength="45" />
+          <Property Name="PickupSchema" Type="varchar" MaxLength="45" />
+          <Property Name="PickupSwitchers" Type="varchar" MaxLength="45" />
+          <Property Name="Regulators" Type="varchar" MaxLength="100" />
+          <Property Name="Tremolo" Type="varchar" MaxLength="45" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="electrodrum">
+          <Key>
+            <PropertyRef Name="Instruments_Id" />
+          </Key>
+          <Property Name="Peds" Type="tinytext" />
+          <Property Name="Cembals" Type="tinytext" />
+          <Property Name="Pedals" Type="varchar" MaxLength="45" />
+          <Property Name="Racks" Type="varchar" MaxLength="45" />
+          <Property Name="Polyphony" Type="int" />
+          <Property Name="Tembers" Type="text" />
+          <Property Name="Inputs" Type="varchar" MaxLength="100" />
+          <Property Name="Outputs" Type="varchar" MaxLength="100" />
+          <Property Name="Size" Type="varchar" MaxLength="45" />
+          <Property Name="Weight" Type="varchar" MaxLength="45" />
+          <Property Name="Instruments_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="genericcategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="guitar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="StringQuantity" Type="int" />
+          <Property Name="FretQuantity" Type="int" />
+          <Property Name="Size" Type="varchar" MaxLength="45" />
+          <Property Name="Mensure" Type="int" />
+          <Property Name="Tuning_machines" Type="varchar" MaxLength="45" />
+          <Property Name="Set" Type="varchar" MaxLength="100" />
+          <Property Name="Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="keyboard">
+          <Key>
+            <PropertyRef Name="Instruments_Id" />
+          </Key>
+          <Property Name="KeyType" Type="varchar" MaxLength="50" />
+          <Property Name="KeyMachanic" Type="varchar" MaxLength="45" />
+          <Property Name="KeyQuantity" Type="int" />
+          <Property Name="LevelTouchQuantity" Type="tinyint" />
+          <Property Name="HasLighting" Type="bit" />
+          <Property Name="Polyphony" Type="int" />
+          <Property Name="TemberQuantity" Type="int" />
+          <Property Name="Tembers" Type="text" />
+          <Property Name="reverbration" Type="text" />
+          <Property Name="HasTemberOverlay" Type="bit" />
+          <Property Name="HasKeyDivision" Type="bit" />
+          <Property Name="HasAutoAccompaniment" Type="bit" />
+          <Property Name="Inputs" Type="tinytext" />
+          <Property Name="Outputs" Type="tinytext" />
+          <Property Name="Display" Type="mediumtext" />
+          <Property Name="AcusticSystem" Type="mediumtext" />
+          <Property Name="Set" Type="text" />
+          <Property Name="Size" Type="varchar" MaxLength="45" />
+          <Property Name="Instruments_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DateTime" Type="datetime" Precision="0" />
+          <Property Name="Note" Type="text" />
+          <Property Name="TotalSum" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="Customer_Id" Type="int" Nullable="false" />
+          <Property Name="PaymentTypes_Id" Type="int" Nullable="false" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orderproduct">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+            <PropertyRef Name="Product_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" Nullable="false" />
+          <Property Name="Product_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="paymenttypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="producer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Desribtion" Type="mediumtext" />
+          <Property Name="Guaranty" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="ExtraProperties" Type="varchar" MaxLength="255" />
+          <Property Name="Image_path" Type="text" />
+          <Property Name="Category_Id" Type="int" Nullable="false" />
+          <Property Name="IsNew" Type="bit" />
+          <Property Name="Reiting" Type="int" />
+          <Property Name="Producer_Id" Type="int" Nullable="false" />
+          <Property Name="Color_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productcategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="GenericCategory_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="slides">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Caption" Type="varchar" MaxLength="100" />
+          <Property Name="Text" Type="text" />
+          <Property Name="Image_path" Type="varchar" MaxLength="255" />
+          <Property Name="Prod_id" Type="int" />
+        </EntityType>
+        <EntityType Name="synthesizer">
+          <Key>
+            <PropertyRef Name="Keyboard_Instruments_Id" />
+          </Key>
+          <Property Name="KeyHardness" Type="varchar" MaxLength="45" />
+          <Property Name="KeySize" Type="varchar" MaxLength="45" />
+          <Property Name="ToneGenerator" Type="varchar" MaxLength="45" />
+          <Property Name="AccompanimentStileNumber" Type="int" />
+          <Property Name="Features" Type="mediumtext" />
+          <Property Name="Sempling" Type="varchar" MaxLength="45" />
+          <Property Name="Sequence" Type="varchar" MaxLength="45" />
+          <Property Name="Keyboard_Instruments_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bool" Nullable="false" />
+          <Property Name="PasswordHash" Type="longtext" />
+          <Property Name="SecurityStamp" Type="longtext" />
+          <Property Name="PhoneNumberConfirmed" Type="bool" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bool" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
+          <Property Name="LockoutEnabled" Type="bool" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userclaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ClaimType" Type="longtext" />
+          <Property Name="ClaimValue" Type="longtext" />
+        </EntityType>
+        <EntityType Name="userlogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userphone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="45" />
+          <Property Name="User_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userrole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userclaims" Type="Self.userclaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userlogins" Type="Self.userlogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Roles">
+          <End Role="user" Type="Self.user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userrole" Type="Self.userrole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userrole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AcusticDrum_Instruments1">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="acusticdrum" Type="Self.acusticdrum" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="acusticdrum">
+              <PropertyRef Name="Instruments_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_AcusticGuitars_Guitar1">
+          <End Role="guitar" Type="Self.guitar" Multiplicity="1" />
+          <End Role="acusticguitars" Type="Self.acusticguitars" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="guitar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="acusticguitars">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Delivary_Address1">
+          <End Role="address" Type="Self.address" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="delivary" Type="Self.delivary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="delivary">
+              <PropertyRef Name="Address_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Delivary_Order1">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="delivary" Type="Self.delivary" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="delivary">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_DigitalPiano_Keyboard1">
+          <End Role="keyboard" Type="Self.keyboard" Multiplicity="1" />
+          <End Role="digitalpiano" Type="Self.digitalpiano" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="keyboard">
+              <PropertyRef Name="Instruments_Id" />
+            </Principal>
+            <Dependent Role="digitalpiano">
+              <PropertyRef Name="Keyboard_Instruments_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ElectroAndBassGuitars_Guitar1">
+          <End Role="guitar" Type="Self.guitar" Multiplicity="1" />
+          <End Role="electroandbassguitars" Type="Self.electroandbassguitars" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="guitar">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="electroandbassguitars">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ElectroDrum_Instruments1">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="electrodrum" Type="Self.electrodrum" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="electrodrum">
+              <PropertyRef Name="Instruments_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Guitar_Instruments">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="guitar" Type="Self.guitar" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="guitar">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Keyboard_Instruments1">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="keyboard" Type="Self.keyboard" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="keyboard">
+              <PropertyRef Name="Instruments_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Order_PaymentTypes1">
+          <End Role="paymenttypes" Type="Self.paymenttypes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="paymenttypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="PaymentTypes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderProduct_Order1">
+          <End Role="order" Type="Self.order" Multiplicity="1" />
+          <End Role="orderproduct" Type="Self.orderproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="orderproduct">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_OrderProduct_Product1">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="orderproduct" Type="Self.orderproduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="orderproduct">
+              <PropertyRef Name="Product_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Color1">
+          <End Role="color" Type="Self.color" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="color">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="Color_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Producer1">
+          <End Role="producer" Type="Self.producer" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="Producer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_ProductCategory1">
+          <End Role="productcategory" Type="Self.productcategory" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productcategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ProductCategory_GenericCategory1">
+          <End Role="genericcategory" Type="Self.genericcategory" Multiplicity="1" />
+          <End Role="productcategory" Type="Self.productcategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genericcategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="productcategory">
+              <PropertyRef Name="GenericCategory_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Synthesizer_Keyboard1">
+          <End Role="keyboard" Type="Self.keyboard" Multiplicity="1" />
+          <End Role="synthesizer" Type="Self.synthesizer" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="keyboard">
+              <PropertyRef Name="Instruments_Id" />
+            </Principal>
+            <Dependent Role="synthesizer">
+              <PropertyRef Name="Keyboard_Instruments_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserPhone_User1">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="userphone" Type="Self.userphone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userphone">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdentityRole_Users">
+          <End Role="roles" Type="Self.roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="userrole" Type="Self.userrole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userrole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="acusticdrum" EntityType="Self.acusticdrum" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="acusticguitars" EntityType="Self.acusticguitars" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="address" EntityType="Self.address" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="city" EntityType="Self.city" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="color" EntityType="Self.color" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="delivary" EntityType="Self.delivary" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="digitalpiano" EntityType="Self.digitalpiano" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="electroandbassguitars" EntityType="Self.electroandbassguitars" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="electrodrum" EntityType="Self.electrodrum" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="genericcategory" EntityType="Self.genericcategory" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="guitar" EntityType="Self.guitar" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="keyboard" EntityType="Self.keyboard" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="order" EntityType="Self.order" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="orderproduct" EntityType="Self.orderproduct" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="paymenttypes" EntityType="Self.paymenttypes" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="producer" EntityType="Self.producer" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="productcategory" EntityType="Self.productcategory" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="roles" EntityType="Self.roles" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="slides" EntityType="Self.slides" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="synthesizer" EntityType="Self.synthesizer" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="userclaims" EntityType="Self.userclaims" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="userlogins" EntityType="Self.userlogins" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="userphone" EntityType="Self.userphone" Schema="musicstorev1.0" store:Type="Tables" />
+          <EntitySet Name="userrole" EntityType="Self.userrole" Schema="musicstorev1.0" store:Type="Tables" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+            <End Role="user" EntitySet="user" />
+            <End Role="userclaims" EntitySet="userclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+            <End Role="user" EntitySet="user" />
+            <End Role="userlogins" EntitySet="userlogins" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Roles" Association="Self.ApplicationUser_Roles">
+            <End Role="user" EntitySet="user" />
+            <End Role="userrole" EntitySet="userrole" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AcusticDrum_Instruments1" Association="Self.fk_AcusticDrum_Instruments1">
+            <End Role="product" EntitySet="product" />
+            <End Role="acusticdrum" EntitySet="acusticdrum" />
+          </AssociationSet>
+          <AssociationSet Name="fk_AcusticGuitars_Guitar1" Association="Self.fk_AcusticGuitars_Guitar1">
+            <End Role="guitar" EntitySet="guitar" />
+            <End Role="acusticguitars" EntitySet="acusticguitars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Delivary_Address1" Association="Self.fk_Delivary_Address1">
+            <End Role="address" EntitySet="address" />
+            <End Role="delivary" EntitySet="delivary" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Delivary_Order1" Association="Self.fk_Delivary_Order1">
+            <End Role="order" EntitySet="order" />
+            <End Role="delivary" EntitySet="delivary" />
+          </AssociationSet>
+          <AssociationSet Name="fk_DigitalPiano_Keyboard1" Association="Self.fk_DigitalPiano_Keyboard1">
+            <End Role="keyboard" EntitySet="keyboard" />
+            <End Role="digitalpiano" EntitySet="digitalpiano" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ElectroAndBassGuitars_Guitar1" Association="Self.fk_ElectroAndBassGuitars_Guitar1">
+            <End Role="guitar" EntitySet="guitar" />
+            <End Role="electroandbassguitars" EntitySet="electroandbassguitars" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ElectroDrum_Instruments1" Association="Self.fk_ElectroDrum_Instruments1">
+            <End Role="product" EntitySet="product" />
+            <End Role="electrodrum" EntitySet="electrodrum" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Guitar_Instruments" Association="Self.fk_Guitar_Instruments">
+            <End Role="product" EntitySet="product" />
+            <End Role="guitar" EntitySet="guitar" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Keyboard_Instruments1" Association="Self.fk_Keyboard_Instruments1">
+            <End Role="product" EntitySet="product" />
+            <End Role="keyboard" EntitySet="keyboard" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Order_PaymentTypes1" Association="Self.fk_Order_PaymentTypes1">
+            <End Role="paymenttypes" EntitySet="paymenttypes" />
+            <End Role="order" EntitySet="order" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderProduct_Order1" Association="Self.fk_OrderProduct_Order1">
+            <End Role="order" EntitySet="order" />
+            <End Role="orderproduct" EntitySet="orderproduct" />
+          </AssociationSet>
+          <AssociationSet Name="fk_OrderProduct_Product1" Association="Self.fk_OrderProduct_Product1">
+            <End Role="product" EntitySet="product" />
+            <End Role="orderproduct" EntitySet="orderproduct" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Color1" Association="Self.fk_Product_Color1">
+            <End Role="color" EntitySet="color" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Producer1" Association="Self.fk_Product_Producer1">
+            <End Role="producer" EntitySet="producer" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_ProductCategory1" Association="Self.fk_Product_ProductCategory1">
+            <End Role="productcategory" EntitySet="productcategory" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ProductCategory_GenericCategory1" Association="Self.fk_ProductCategory_GenericCategory1">
+            <End Role="genericcategory" EntitySet="genericcategory" />
+            <End Role="productcategory" EntitySet="productcategory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Synthesizer_Keyboard1" Association="Self.fk_Synthesizer_Keyboard1">
+            <End Role="keyboard" EntitySet="keyboard" />
+            <End Role="synthesizer" EntitySet="synthesizer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserPhone_User1" Association="Self.fk_UserPhone_User1">
+            <End Role="user" EntitySet="user" />
+            <End Role="userphone" EntitySet="userphone" />
+          </AssociationSet>
+          <AssociationSet Name="IdentityRole_Users" Association="Self.IdentityRole_Users">
+            <End Role="roles" EntitySet="roles" />
+            <End Role="userrole" EntitySet="userrole" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AcusticDrum" BaseType="Model.Product">
+          <Property Name="Seria" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="DrumQuantity" Type="Int32" Nullable="true" />
+          <Property Name="BassDrum" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="FloorTom" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="FirstTom" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="SecondTom" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="SnareDrum" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Set" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Material" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </EntityType>
+        <EntityType Name="AcusticGuitar" BaseType="Model.Guitar">
+          <Property Name="Pickup" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="MaterialAcustic" Type="Model.AcusticGuitarMaterial" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DigitalPiano" BaseType="Model.Keyboard">
+          <Property Name="CompositionQuantity" Type="Int32" Nullable="true" />
+          <Property Name="Pedals" Type="Model.DigitalPianoPedals" Nullable="false" />
+          <Property Name="OtherFunctions" Type="Model.DigitalPianoOtherFunctions" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ElectroAndBassGuitar" BaseType="Model.Guitar">
+          <Property Name="Tremolo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="MaterialEnB" Type="Model.ElectroAndBassGuitarMaterial" Nullable="false" />
+          <Property Name="ConstructionEnB" Type="Model.ElectroAndBassGuitarConstruction" Nullable="false" />
+          <Property Name="ElectronicEnB" Type="Model.ElectroAndBassGuitarElectonic" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ElectroDrum" BaseType="Model.Product">
+          <Property Name="Inputs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Outputs" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Size" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Weight" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Configuration" Type="Model.ElectroDrumConfiguration" Nullable="false" />
+          <Property Name="Tembers" Type="Model.ElectroDrumTembers" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Guitar" BaseType="Model.Product">
+          <Property Name="Set" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Construction" Type="Model.GuitarConstruction" Nullable="false" />
+          <Property Name="Material" Type="Model.GuitarMaterial" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Keyboard" BaseType="Model.Product">
+          <Property Name="HasAutoAccompaniment" Type="Boolean" Nullable="true" />
+          <Property Name="Inputs" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Outputs" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Keys" Type="Model.KeyboardKeys" Nullable="false" />
+          <Property Name="Tembers" Type="Model.KeyboardTembers" Nullable="false" />
+          <Property Name="Effects" Type="Model.KeyboardEffects" Nullable="false" />
+          <Property Name="GeneralKb" Type="Model.KeyboardGeneral" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Synthesizer" BaseType="Model.Keyboard">
+          <Property Name="ToneGenerator" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Sempling" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="Sequence" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Name="KeySz" Type="Model.SynthesizerKeys" Nullable="false" />
+          <Property Name="AutoAccompaniment" Type="Model.SynthesizerAutoAccomponiment" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="EFDbContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Addresess" EntityType="Model.Address" />
+          <EntitySet Name="Delivaries" EntityType="Model.Delivary" />
+          <EntitySet Name="Orders" EntityType="Model.Order" />
+          <EntitySet Name="PaymentTypes" EntityType="Model.PaymentType" />
+          <AssociationSet Name="fk_PaymentTypes_Order1" Association="Model.fk_PaymentTypes_Order1">
+            <End Role="order" EntitySet="Orders" />
+            <End Role="paymenttypes" EntitySet="PaymentTypes" />
+          </AssociationSet>
+          <EntitySet Name="Products" EntityType="Model.Product" />
+          <AssociationSet Name="orderproduct" Association="Model.orderproduct">
+            <End Role="product" EntitySet="Products" />
+            <End Role="order" EntitySet="Orders" />
+          </AssociationSet>
+          <EntitySet Name="productcategory" EntityType="Model.productcategory" />
+          <AssociationSet Name="fk_Product_ProductCategory1" Association="Model.fk_Product_ProductCategory1">
+            <End Role="productcategory" EntitySet="productcategory" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="genericcategory" EntityType="Model.genericcategory" />
+          <AssociationSet Name="fk_ProductCategory_GenericCategory1" Association="Model.fk_ProductCategory_GenericCategory1">
+            <End Role="genericcategory" EntitySet="genericcategory" />
+            <End Role="productcategory" EntitySet="productcategory" />
+          </AssociationSet>
+          <EntitySet Name="Colors" EntityType="Model.Color" />
+          <EntitySet Name="Producers" EntityType="Model.Producer" />
+          <AssociationSet Name="fk_Product_Color1" Association="Model.fk_Product_Color1">
+            <End Role="color" EntitySet="Colors" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Product_Producer1" Association="Model.fk_Product_Producer1">
+            <End Role="producer" EntitySet="Producers" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="city" EntityType="Model.city" />
+          <EntitySet Name="slides" EntityType="Model.slides" />
+          <AssociationSet Name="fk_Delivary_Order1" Association="Model.fk_Delivary_Order1">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Delivary" EntitySet="Delivaries" />
+          </AssociationSet>
+          <AssociationSet Name="AddressDelivary" Association="Model.AddressDelivary">
+            <End Role="Address" EntitySet="Addresess" />
+            <End Role="Delivary" EntitySet="Delivaries" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="Model.Role" />
+          <EntitySet Name="Users" EntityType="Model.User" />
+          <EntitySet Name="UserClaims" EntityType="Model.UserClaim" />
+          <EntitySet Name="UserLogins" EntityType="Model.UserLogin" />
+          <AssociationSet Name="ApplicationUser_Claims" Association="Model.ApplicationUser_Claims">
+            <End Role="user" EntitySet="Users" />
+            <End Role="userclaims" EntitySet="UserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Model.ApplicationUser_Logins">
+            <End Role="user" EntitySet="Users" />
+            <End Role="userlogins" EntitySet="UserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="userrole" Association="Model.userrole">
+            <End Role="user" EntitySet="Users" />
+            <End Role="roles" EntitySet="Roles" />
+          </AssociationSet>
+          <EntitySet Name="UserPhones" EntityType="Model.UserPhone" />
+          <AssociationSet Name="fk_UserPhone_User1" Association="Model.fk_UserPhone_User1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="userphone" EntitySet="UserPhones" />
+          </AssociationSet>
+          <AssociationSet Name="AddressUser" Association="Model.AddressUser">
+            <End Role="Address" EntitySet="Addresess" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="OrderUser" Association="Model.OrderUser">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="GuitarConstruction">
+          <Property Type="Int32" Name="StringQuantity" Nullable="true" DefaultValue="6" />
+          <Property Type="Int32" Name="FretQuantity" Nullable="true" />
+          <Property Type="String" Name="Size" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GuitarMaterial">
+          <Property Type="Int32" Name="Mensure" Nullable="true" />
+          <Property Type="String" Name="Tuning_machines" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="AcusticGuitarMaterial">
+          <Property Type="String" Name="TopDeka" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="BottomDeka" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Neck" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="NeckCover" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Bridge" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ElectroAndBassGuitarMaterial">
+          <Property Type="String" Name="BodyMaterial" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="NeckMaterial" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="NeckCoverMaterial" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ElectroAndBassGuitarConstruction">
+          <Property Type="String" Name="NeckMount" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="NeckSideView" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="Boolean" Name="StringsThroughtBody" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ElectroAndBassGuitarElectonic">
+          <Property Type="String" Name="Regulators" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="PickupSwitchers" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="PickupSchema" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="KeyboardKeys">
+          <Property Type="Boolean" Name="HasLighting" Nullable="true" />
+          <Property Type="SByte" Name="LevelTouchQuantity" Nullable="true" />
+          <Property Type="Int32" Name="KeyQuantity" Nullable="true" />
+          <Property Type="String" Name="KeyMachanic" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="KeyType" MaxLength="50" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="KeyboardTembers">
+          <Property Type="Int32" Name="Polyphony" Nullable="true" />
+          <Property Type="Int32" Name="TemberQuantity" Nullable="true" />
+          <Property Type="String" Name="Tembers" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="KeyboardEffects">
+          <Property Type="String" Name="reverbration" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="Boolean" Name="HasTemberOverlay" Nullable="true" />
+          <Property Type="Boolean" Name="HasKeyDivision" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="KeyboardGeneral">
+          <Property Type="String" Name="Size" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Set" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="AcusticSystem" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Display" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SynthesizerKeys">
+          <Property Type="String" Name="KeyHardness" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="KeySize" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="SynthesizerAutoAccomponiment">
+          <Property Type="Int32" Name="AccompanimentStileNumber" Nullable="true" />
+          <Property Type="String" Name="Features" MaxLength="16777215" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DigitalPianoPedals">
+          <Property Type="Int32" Name="PedalsQuantity" Nullable="true" />
+          <Property Type="String" Name="PedalsFunction" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DigitalPianoOtherFunctions">
+          <Property Type="String" Name="StatyFunction" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Metronom" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="Boolean" Name="Transponation" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ElectroDrumConfiguration">
+          <Property Type="String" Name="Peds" MaxLength="255" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Cembals" MaxLength="255" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Pedals" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+          <Property Type="String" Name="Racks" MaxLength="45" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="ElectroDrumTembers">
+          <Property Type="Int32" Name="Polyphony" Nullable="true" />
+          <Property Type="String" Name="Tembers" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="City" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Street" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="House" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Apartment" Type="Int32" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Delivary" Relationship="Model.AddressDelivary" FromRole="Address" ToRole="Delivary" />
+          <Property Name="User_Id" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Model.AddressUser" FromRole="Address" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Delivary">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Cost" Type="Decimal" />
+          <Property Name="Address_Id" Type="Int32" Nullable="false" />
+          <Property Name="Order_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="order" Relationship="Model.fk_Delivary_Order1" FromRole="Delivary" ToRole="Order" />
+          <NavigationProperty Name="Address" Relationship="Model.AddressDelivary" FromRole="Delivary" ToRole="Address" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" />
+          <Property Name="Note" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="TotalSum" Type="Decimal" />
+          <Property Name="Customer_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="paymenttypes" Relationship="Model.fk_PaymentTypes_Order1" FromRole="order" ToRole="paymenttypes" />
+          <NavigationProperty Name="product" Relationship="Model.orderproduct" FromRole="order" ToRole="product" />
+          <Property Name="PaymentTypes_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="delivary" Relationship="Model.fk_Delivary_Order1" FromRole="Order" ToRole="Delivary" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Model.OrderUser" FromRole="Order" ToRole="User" />
+        </EntityType>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="order" Relationship="Model.fk_PaymentTypes_Order1" FromRole="paymenttypes" ToRole="order" />
+          <Property Name="Id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_PaymentTypes_Order1">
+          <End Type="Model.Order" Role="order" Multiplicity="*" />
+          <End Type="Model.PaymentType" Role="paymenttypes" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="paymenttypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="PaymentTypes_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExtraProperties" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="order" Relationship="Model.orderproduct" FromRole="product" ToRole="order" />
+          <Property Name="General" Type="Model.GeneralAttributes" Nullable="false" />
+          <Property Name="Category_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="productcategory" Relationship="Model.fk_Product_ProductCategory1" FromRole="Product" ToRole="productcategory" />
+          <Property Name="Image_path" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Producer_Id" Type="Int32" Nullable="false" />
+          <Property Name="Color_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="color" Relationship="Model.fk_Product_Color1" FromRole="Product" ToRole="color" />
+          <NavigationProperty Name="producer" Relationship="Model.fk_Product_Producer1" FromRole="Product" ToRole="producer" />
+        </EntityType>
+        <Association Name="orderproduct">
+          <End Type="Model.Product" Role="product" Multiplicity="*" />
+          <End Type="Model.Order" Role="order" Multiplicity="*" />
+        </Association>
+        <ComplexType Name="GeneralAttributes">
+          <Property Type="String" Name="Name" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Type="String" Name="Desribtion" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Guaranty" />
+          <Property Type="Decimal" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Reiting" Nullable="false" />
+          <Property Type="Boolean" Name="IsNew" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="productcategory">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="Model.fk_Product_ProductCategory1" FromRole="productcategory" ToRole="Product" />
+          <Property Name="GenericCategory_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="genericcategory" Relationship="Model.fk_ProductCategory_GenericCategory1" FromRole="productcategory" ToRole="genericcategory" />
+        </EntityType>
+        <Association Name="fk_Product_ProductCategory1">
+          <End Type="Model.productcategory" Role="productcategory" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="productcategory">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Category_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="genericcategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="productcategory" Relationship="Model.fk_ProductCategory_GenericCategory1" FromRole="genericcategory" ToRole="productcategory" />
+        </EntityType>
+        <Association Name="fk_ProductCategory_GenericCategory1">
+          <End Type="Model.genericcategory" Role="genericcategory" Multiplicity="1" />
+          <End Type="Model.productcategory" Role="productcategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genericcategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="productcategory">
+              <PropertyRef Name="GenericCategory_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Color">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="Model.fk_Product_Color1" FromRole="color" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Producer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="Model.fk_Product_Producer1" FromRole="producer" ToRole="Product" />
+        </EntityType>
+        <Association Name="fk_Product_Color1">
+          <End Type="Model.Color" Role="color" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="color">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Color_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Product_Producer1">
+          <End Type="Model.Producer" Role="producer" Multiplicity="1" />
+          <End Type="Model.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="producer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="Producer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="city">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="slides">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Caption" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Text" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Image_path" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Prod_id" Type="Int32" />
+        </EntityType>
+        <Association Name="fk_Delivary_Order1">
+          <End Type="Model.Order" Role="Order" Multiplicity="1" />
+          <End Type="Model.Delivary" Role="Delivary" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Delivary">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AddressDelivary">
+          <End Type="Model.Address" Role="Address" Multiplicity="1" />
+          <End Type="Model.Delivary" Role="Delivary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Delivary">
+              <PropertyRef Name="Address_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user" Relationship="Model.userrole" FromRole="roles" ToRole="user" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="userclaims" Relationship="Model.ApplicationUser_Claims" FromRole="user" ToRole="userclaims" />
+          <NavigationProperty Name="userlogins" Relationship="Model.ApplicationUser_Logins" FromRole="user" ToRole="userlogins" />
+          <NavigationProperty Name="roles" Relationship="Model.userrole" FromRole="user" ToRole="roles" />
+          <NavigationProperty Name="userphone" Relationship="Model.fk_UserPhone_User1" FromRole="User" ToRole="userphone" />
+          <NavigationProperty Name="Address" Relationship="Model.AddressUser" FromRole="User" ToRole="Address" />
+          <NavigationProperty Name="Order" Relationship="Model.OrderUser" FromRole="User" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="UserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimValue" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="user" Relationship="Model.ApplicationUser_Claims" FromRole="userclaims" ToRole="user" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Model.ApplicationUser_Logins" FromRole="userlogins" ToRole="user" />
+        </EntityType>
+        <Association Name="ApplicationUser_Claims">
+          <End Type="Model.User" Role="user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.UserClaim" Role="userclaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Type="Model.User" Role="user" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.UserLogin" Role="userlogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="userrole">
+          <End Type="Model.User" Role="user" Multiplicity="*" />
+          <End Type="Model.Role" Role="roles" Multiplicity="*" />
+        </Association>
+        <EntityType Name="UserPhone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="User_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="Model.fk_UserPhone_User1" FromRole="userphone" ToRole="User" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fk_UserPhone_User1">
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <End Type="Model.UserPhone" Role="userphone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="userphone">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AddressUser">
+          <End Type="Model.Address" Role="Address" Multiplicity="*" />
+          <End Type="Model.User" Role="User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="OrderUser">
+          <End Type="Model.Order" Role="Order" Multiplicity="*" />
+          <End Type="Model.User" Role="User" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="User_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="EFDbContext">
+          <EntitySetMapping Name="Addresess">
+            <EntityTypeMapping TypeName="Model.Address">
+              <MappingFragment StoreEntitySet="address">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Apartment" ColumnName="Apartment" />
+                <ScalarProperty Name="House" ColumnName="House" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivaries">
+            <EntityTypeMapping TypeName="Model.Delivary">
+              <MappingFragment StoreEntitySet="delivary">
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Address_Id" ColumnName="Address_Id" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Model.Order">
+              <MappingFragment StoreEntitySet="order">
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="PaymentTypes_Id" ColumnName="PaymentTypes_Id" />
+                <ScalarProperty Name="Customer_Id" ColumnName="Customer_Id" />
+                <ScalarProperty Name="TotalSum" ColumnName="TotalSum" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
+                <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="Model.PaymentType">
+              <MappingFragment StoreEntitySet="paymenttypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="IsTypeOf(Model.Guitar)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="guitar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Set" ColumnName="Set" />
+                <ComplexProperty Name="Construction">
+                  <ScalarProperty Name="Size" ColumnName="Size" />
+                  <ScalarProperty Name="FretQuantity" ColumnName="FretQuantity" />
+                  <ScalarProperty Name="StringQuantity" ColumnName="StringQuantity" />
+                </ComplexProperty>
+                <ComplexProperty Name="Material">
+                  <ScalarProperty Name="Tuning_machines" ColumnName="Tuning_machines" />
+                  <ScalarProperty Name="Mensure" ColumnName="Mensure" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.AcusticGuitar)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="acusticguitars">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Pickup" ColumnName="Pickup" />
+                <ComplexProperty Name="MaterialAcustic">
+                  <ScalarProperty Name="Bridge" ColumnName="Bridge" />
+                  <ScalarProperty Name="NeckCover" ColumnName="NeckCover" />
+                  <ScalarProperty Name="Neck" ColumnName="Neck" />
+                  <ScalarProperty Name="BottomDeka" ColumnName="BottomDeka" />
+                  <ScalarProperty Name="TopDeka" ColumnName="TopDeka" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.ElectroAndBassGuitar)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="electroandbassguitars">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Tremolo" ColumnName="Tremolo" />
+                <ComplexProperty Name="MaterialEnB">
+                  <ScalarProperty Name="NeckCoverMaterial" ColumnName="NeckCoverMaterial" />
+                  <ScalarProperty Name="NeckMaterial" ColumnName="NeckMaterial" />
+                  <ScalarProperty Name="BodyMaterial" ColumnName="BodyMaterial" />
+                </ComplexProperty>
+                <ComplexProperty Name="ConstructionEnB">
+                  <ScalarProperty Name="StringsThroughtBody" ColumnName="StringsThroughtBody" />
+                  <ScalarProperty Name="NeckSideView" ColumnName="NeckSideView" />
+                  <ScalarProperty Name="NeckMount" ColumnName="NeckMount" />
+                </ComplexProperty>
+                <ComplexProperty Name="ElectronicEnB">
+                  <ScalarProperty Name="PickupSchema" ColumnName="PickupSchema" />
+                  <ScalarProperty Name="PickupSwitchers" ColumnName="PickupSwitchers" />
+                  <ScalarProperty Name="Regulators" ColumnName="Regulators" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.Product)">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="Color_Id" ColumnName="Color_Id" />
+                <ScalarProperty Name="Producer_Id" ColumnName="Producer_Id" />
+                <ScalarProperty Name="Image_path" ColumnName="Image_path" />
+                <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ExtraProperties" ColumnName="ExtraProperties" />
+                <ComplexProperty Name="General">
+                  <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                  <ScalarProperty Name="Reiting" ColumnName="Reiting" />
+                  <ScalarProperty Name="Price" ColumnName="Price" />
+                  <ScalarProperty Name="Guaranty" ColumnName="Guaranty" />
+                  <ScalarProperty Name="Desribtion" ColumnName="Desribtion" />
+                  <ScalarProperty Name="Name" ColumnName="Name" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.Keyboard)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="keyboard">
+                <ScalarProperty Name="Id" ColumnName="Instruments_Id" />
+                <ScalarProperty Name="Outputs" ColumnName="Outputs" />
+                <ScalarProperty Name="Inputs" ColumnName="Inputs" />
+                <ScalarProperty Name="HasAutoAccompaniment" ColumnName="HasAutoAccompaniment" />
+                <ComplexProperty Name="Keys">
+                  <ScalarProperty Name="KeyType" ColumnName="KeyType" />
+                  <ScalarProperty Name="KeyMachanic" ColumnName="KeyMachanic" />
+                  <ScalarProperty Name="KeyQuantity" ColumnName="KeyQuantity" />
+                  <ScalarProperty Name="LevelTouchQuantity" ColumnName="LevelTouchQuantity" />
+                  <ScalarProperty Name="HasLighting" ColumnName="HasLighting" />
+                </ComplexProperty>
+                <ComplexProperty Name="Tembers">
+                  <ScalarProperty Name="Tembers" ColumnName="Tembers" />
+                  <ScalarProperty Name="TemberQuantity" ColumnName="TemberQuantity" />
+                  <ScalarProperty Name="Polyphony" ColumnName="Polyphony" />
+                </ComplexProperty>
+                <ComplexProperty Name="Effects">
+                  <ScalarProperty Name="HasKeyDivision" ColumnName="HasKeyDivision" />
+                  <ScalarProperty Name="HasTemberOverlay" ColumnName="HasTemberOverlay" />
+                  <ScalarProperty Name="reverbration" ColumnName="reverbration" />
+                </ComplexProperty>
+                <ComplexProperty Name="GeneralKb">
+                  <ScalarProperty Name="Display" ColumnName="Display" />
+                  <ScalarProperty Name="AcusticSystem" ColumnName="AcusticSystem" />
+                  <ScalarProperty Name="Set" ColumnName="Set" />
+                  <ScalarProperty Name="Size" ColumnName="Size" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.DigitalPiano)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="digitalpiano">
+                <ScalarProperty Name="Id" ColumnName="Keyboard_Instruments_Id" />
+                <ScalarProperty Name="CompositionQuantity" ColumnName="CompositionQuantity" />
+                <ComplexProperty Name="Pedals">
+                  <ScalarProperty Name="PedalsFunction" ColumnName="PedalsFunction" />
+                  <ScalarProperty Name="PedalsQuantity" ColumnName="PedalsQuantity" />
+                </ComplexProperty>
+                <ComplexProperty Name="OtherFunctions">
+                  <ScalarProperty Name="Transponation" ColumnName="Transponation" />
+                  <ScalarProperty Name="Metronom" ColumnName="Metronom" />
+                  <ScalarProperty Name="StatyFunction" ColumnName="StatyFunction" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.Synthesizer)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="synthesizer">
+                <ScalarProperty Name="Id" ColumnName="Keyboard_Instruments_Id" />
+                <ScalarProperty Name="ToneGenerator" ColumnName="ToneGenerator" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="Sempling" ColumnName="Sempling" />
+                <ComplexProperty Name="KeySz">
+                  <ScalarProperty Name="KeySize" ColumnName="KeySize" />
+                  <ScalarProperty Name="KeyHardness" ColumnName="KeyHardness" />
+                </ComplexProperty>
+                <ComplexProperty Name="AutoAccompaniment">
+                  <ScalarProperty Name="Features" ColumnName="Features" />
+                  <ScalarProperty Name="AccompanimentStileNumber" ColumnName="AccompanimentStileNumber" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.ElectroDrum)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="electrodrum">
+                <ScalarProperty Name="Id" ColumnName="Instruments_Id" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Outputs" ColumnName="Outputs" />
+                <ScalarProperty Name="Inputs" ColumnName="Inputs" />
+                <ComplexProperty Name="Configuration">
+                  <ScalarProperty Name="Racks" ColumnName="Racks" />
+                  <ScalarProperty Name="Pedals" ColumnName="Pedals" />
+                  <ScalarProperty Name="Cembals" ColumnName="Cembals" />
+                  <ScalarProperty Name="Peds" ColumnName="Peds" />
+                </ComplexProperty>
+                <ComplexProperty Name="Tembers">
+                  <ScalarProperty Name="Tembers" ColumnName="Tembers" />
+                  <ScalarProperty Name="Polyphony" ColumnName="Polyphony" />
+                </ComplexProperty>
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(Model.AcusticDrum)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+              <MappingFragment StoreEntitySet="acusticdrum">
+                <ScalarProperty Name="Id" ColumnName="Instruments_Id" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Set" ColumnName="Set" />
+                <ScalarProperty Name="SnareDrum" ColumnName="SnareDrum" />
+                <ScalarProperty Name="SecondTom" ColumnName="SecondTom" />
+                <ScalarProperty Name="FirstTom" ColumnName="FirstTom" />
+                <ScalarProperty Name="FloorTom" ColumnName="FloorTom" />
+                <ScalarProperty Name="BassDrum" ColumnName="BassDrum" />
+                <ScalarProperty Name="DrumQuantity" ColumnName="DrumQuantity" />
+                <ScalarProperty Name="Seria" ColumnName="Seria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="orderproduct" TypeName="Model.orderproduct" StoreEntitySet="orderproduct">
+            <EndProperty Name="product">
+              <ScalarProperty Name="Id" ColumnName="Product_Id" />
+            </EndProperty>
+            <EndProperty Name="order">
+              <ScalarProperty Name="Id" ColumnName="Order_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="productcategory">
+            <EntityTypeMapping TypeName="Model.productcategory">
+              <MappingFragment StoreEntitySet="productcategory">
+                <ScalarProperty Name="GenericCategory_Id" ColumnName="GenericCategory_Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="genericcategory">
+            <EntityTypeMapping TypeName="Model.genericcategory">
+              <MappingFragment StoreEntitySet="genericcategory">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Colors">
+            <EntityTypeMapping TypeName="Model.Color">
+              <MappingFragment StoreEntitySet="color">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producers">
+            <EntityTypeMapping TypeName="Model.Producer">
+              <MappingFragment StoreEntitySet="producer">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="city">
+            <EntityTypeMapping TypeName="Model.city">
+              <MappingFragment StoreEntitySet="city">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="slides">
+            <EntityTypeMapping TypeName="Model.slides">
+              <MappingFragment StoreEntitySet="slides">
+                <ScalarProperty Name="Prod_id" ColumnName="Prod_id" />
+                <ScalarProperty Name="Image_path" ColumnName="Image_path" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Model.Role">
+              <MappingFragment StoreEntitySet="roles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.User">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserClaims">
+            <EntityTypeMapping TypeName="Model.UserClaim">
+              <MappingFragment StoreEntitySet="userclaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="Model.UserLogin">
+              <MappingFragment StoreEntitySet="userlogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="userrole" TypeName="Model.userrole" StoreEntitySet="userrole">
+            <EndProperty Name="roles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="user">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="UserPhones">
+            <EntityTypeMapping TypeName="Model.UserPhone">
+              <MappingFragment StoreEntitySet="userphone">
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="User_Id" ColumnName="User_Id" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="DDLGenerationTemplate" Value="$(VSEFTools)\DBGen\SSDLToMySQL.tt" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

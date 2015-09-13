@@ -1,0 +1,85 @@
+﻿@using MusicStore.WebUI.Models.Account
+@model UserInfoViewModel
+
+<script src="~/Scripts/jquery.maskedinput.js" type="text/javascript"></script>
+
+@using (Ajax.BeginForm("EditUserInfo", "Account", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnComplete = "EditSuccess",
+    LoadingElementDuration = 1000
+}))
+{
+    <div class="form-horizontal col-md-6 col-md-offset-1">
+        <h3>Личная информация</h3>
+        <div class="form-group">
+            <div class="col-md-3">@Html.DisplayNameFor(x => x.Name)</div>
+            <div class="col-md-6">
+                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            </div>
+            <div class="col-md-3"> @Html.ValidationMessageFor(x => x.Name)</div> 
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3">@Html.DisplayNameFor(x => x.Email)</div>
+            <div class="col-md-6">
+                @Html.DisplayFor(x => x.Email)
+            </div>
+        </div>
+
+        <h4>Телефон</h4>
+        @for (int i = 0; i < Model.Phones.Count; i++)
+        {
+            <div class="form-group">            
+                <div class="col-md-offset-3 col-md-6">
+                    @Html.TextBoxFor(model => model.Phones[i], new {@id = "phone", @class = "form-control" })
+                </div>
+                <div class="col-md-3">@Html.ValidationMessageFor(model => model.Phones[i])</div>
+            </div>
+        }
+
+        <h4>Адресс доставки</h4>
+
+        @for (int i = 0; i < Model.Addresses.Count; i++)
+        {
+            <div class="form-group">
+                <div class="col-md-3">@Html.DisplayNameFor(model => model.Addresses[i].City)</div>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.Addresses[i].City, new { @class = "form-control" })
+                </div>
+                <div class="col-md-3">@Html.ValidationMessageFor(model => model.Addresses[i].City)</div>
+            </div >
+
+            <div class="form-group">
+                <div class="col-md-3">@Html.DisplayNameFor(model => model.Addresses[i].Street)</div>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(model => model.Addresses[i].Street, new { @class = "form-control" })
+                </div>
+                <div class="col-md-3">@Html.ValidationMessageFor(model => model.Addresses[i].City)</div>
+            </div>
+
+        <div class="col-md-offset-3">
+            <div class="form-group ">
+                <div class="col-md-1">@Html.DisplayNameFor(model => model.Addresses[i].House)</div>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Addresses[i].House, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Addresses[i].House)
+
+                <div class="col-md-1">@Html.DisplayNameFor(model => model.Addresses[i].Apartment)</div>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Addresses[i].Apartment, new { @class = "form-control" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Addresses[i].Apartment)
+            </div>
+        </div>       
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+}
+
+<script>
+    jQuery(function ($) {
+        $("#phone").mask("(999) 999-9999");
+    });
+</script>

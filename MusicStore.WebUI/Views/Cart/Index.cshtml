@@ -1,0 +1,66 @@
+﻿@using MusicStore.WebUI.Models;
+
+@model CartIndexViewModel
+
+@{
+    ViewBag.Title = "MusicStore: ваша корзина";
+}
+
+<div id="Page">
+    <h2>Ваша корзина</h2>
+    <table id="cartTable" class="table">
+        <thead>
+            <tr>
+                <th>Кол-во</th>
+                <th>Инструмент</th>
+                <th class="text-right">Цена</th>
+                <th class="text-right">Общая цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var line in Model.Cart.Lines)
+            {
+                <tr>
+                    <td class="text-center">@line.Quantity</td>
+                    <td class="text-left">@line.Product.General.Name</td>
+                    <td class="text-right">@line.Product.General.Price грн</td>
+                    <td class="text-right">@(line.Product.General.Price * line.Quantity) грн</td>
+                    <td>
+                        @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                        {
+                            @Html.Hidden("ProductId", line.Product.Id)
+                            @Html.HiddenFor(x => x.ReturnUrl)
+                            <input class="btn btn-warning" type="submit" value="Удалить" />
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right">Итого:</td>
+                <td colspan="4" class="text-right">@Model.Cart.ComputeTotalSum() грн</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <div class="text-center">
+        <a class="btn btn-primary" href="@Model.ReturnUrl">Продолжить покупки</a>
+        <a data-toggle="modal" href="#myModal" class="btn btn-primary ">Оформить заказ</a>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby= "myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                @Html.Action("Checkout")
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

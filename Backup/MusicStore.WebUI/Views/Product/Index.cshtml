@@ -1,0 +1,81 @@
+﻿@using MusicStore.WebUI.Models.ProductDetail;
+@model DetailProductViewModel
+
+@{
+    ViewBag.Title = Model.Characteristics[0].Properties["Name"].Value.ToString();
+}
+
+<div class="container-fluid" style="padding-left:40px; padding-right:40px">
+    <div class="row">
+        <h2>@Model.Characteristics[0].Properties["Name"].Value</h2>
+        <div class="col-md-6">
+            <img src="@Model.ImagePath" style="width:auto" height="400" />
+        </div>
+        <div class="col-md-6">
+            <div class="row alert alert-warning" >
+                <div class=" col-md-5" style="padding-top:20px;">
+                <div class="well well-sm product-price price-uah ">
+                    @Model.Characteristics[0].Properties["Price"].Value
+                </div>
+                @using (Html.BeginForm("AddToCart", "Cart"))
+                {
+                    <div class="btn-block" style="padding-top:30px;">
+
+                        @Html.Hidden("id", Model.Characteristics[0].Properties["Id"])
+                        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                        <input type="submit" class=" btn btn-lg btn-success " value="В корзину" />
+                    </div>
+                }
+            </div>
+
+                <div class="col-md-7">
+                    <h4> @Model.Characteristics[0].Title </h4>
+                    @foreach (var prop in Model.Characteristics[0].Properties)
+                    {
+                        if (prop.Value.Value != null && prop.Value.Messege != null && prop.Value.Messege != "Описание")
+                        {
+                            <div class="row">
+                                <div class="col-md-6">
+                                    @prop.Value.Messege
+                                </div>
+                                <div class="col-md-6">
+                                    @prop.Value.Value
+                                </div>
+                            </div>
+                        }
+                    }
+                    <p> <br /> *Цена доставки - @Model.DelivaryCost грн</p>
+                </div>
+            </div>
+            <div class="row alert alert-info">
+                <p>@Model.Characteristics[0].Properties["Desribtion"].Value</p>
+            </div>
+        </div>
+        
+    </div>
+
+    <h3> Характеристики</h3>
+        <div>
+            @for (int i = 1; i < Model.Characteristics.Count; i++ )
+            {
+                var characteristic = Model.Characteristics[i];
+                <h4> @characteristic.Title </h4>
+                foreach (var prop in characteristic.Properties)
+                {
+                    if (prop.Value.Value != null && prop.Value.Messege != null)
+                    {
+                        <div class="row">
+                            <div class="col-md-6">
+                                @prop.Value.Messege
+                            </div>
+                            <div class="col-md-6">
+                                @prop.Value.Value
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+
+</div>
+    

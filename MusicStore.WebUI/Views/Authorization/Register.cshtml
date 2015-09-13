@@ -1,0 +1,48 @@
+﻿@using MusicStore.WebUI.Models.Authorization;
+@model RegisterViewModel
+
+
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("Register", "Authorization", new AjaxOptions
+         {
+             HttpMethod = "POST",
+             InsertionMode = InsertionMode.Replace,
+             OnSuccess = "SuccessRegister"
+         }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Регистрация</h4>
+    </div>
+
+    <div id="Login_modal_body" class="row modal-body">
+        <div class="col-md-6 col-md-offset-1">
+        @foreach(var property in ViewData.ModelMetadata.Properties)
+        {
+            string HTMLtype = (property.PropertyName.Contains("Password")) ? "password" : "text";
+            <div>
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+            </div>
+           <div>
+               @Html.TextBox(property.PropertyName, null, new { @type = HTMLtype, @class="form-control" })
+               @Html.ValidationMessage(property.PropertyName)
+           </div>
+        }
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <input type="submit" class=" btn btn-primary" value="Зарегистрироваться" />
+        <a href="#" class="btn" data-dismiss="modal">Отмена</a>
+    </div>
+}
+
+<script>
+    function SuccessRegister(result) {
+        window.location.href = result.Url;
+    }
+</script>

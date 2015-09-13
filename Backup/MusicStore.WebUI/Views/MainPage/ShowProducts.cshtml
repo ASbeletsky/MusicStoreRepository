@@ -1,0 +1,48 @@
+﻿@using MusicStore.WebUI.Models.Shared;
+@using MusicStore.Domain.Helpers;
+@model IEnumerable<ProductViewModel>
+
+<div class="row">
+
+    <ul >
+        @foreach (var Product in Model)
+        {
+            <li class="col-md-3 thumbnail">
+                <div>
+                    <div >
+                        <div class="btn-group pull-right">
+                            <div class="btn btn-xs btn-default">Все @Product.Category.CategoryName.ToLower()</div>
+                            <a href="@Url.Action("ShowListPage", "MusicInstruments", new {category = Product.Category.CategoryId, page = 1 })" 
+                                                                                                                class="btn btn-xs btn-warning">
+                                <span class="glyphicon glyphicon-arrow-right"></span>
+                            </a>
+                        </div>
+                        <br />
+                        <div class="popular_product-img" style="margin-bottom:0px">
+                            <div class="popular_product-img-inner image-img-inner-200">
+                                <a href="@Url.Action("Index", "Product", new {Product.Id})">
+                                    <img class="image-centering-img " src='@Product.ImagePath' style="height:200px" />
+                                </a>
+                            </div>
+                        </div>
+                        <div><a href="@Url.Action("Index", "Product", new {Product.Id})" class="btn btn-link center-block" > @Product.Name </a></div>
+                        <div class="container-fluid">
+
+                              <div class="col-md-7 alert alert-warning price-uah">@Product.Price.ToString().ToPrice()</div>
+                              @using (Html.BeginForm("AddToCart", "Cart"))
+                              {
+                                <div class="col-lg-offset-2 col-md-2">
+                                    @Html.Hidden("id", Product.Id)
+                                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                    <input type="submit" class=" btn btn-lg btn-success " value="+" />
+                                </div>
+                              }
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+
+</div>
+

@@ -1,0 +1,28 @@
+﻿@using MusicStore.WebUI.Models.MusicInstruments
+@model ProductListPageViewModel
+
+@{
+    ViewBag.Title = "Товары";
+    Layout = "~/Views/Shared/_ListProductLayout.cshtml";
+}
+
+<div style="margin-left:40px;">
+    <div class="row">
+        <!--Меню-->
+        <div class="col-lg-2 col-md-3">
+            @Html.Action("Menu", "Nav")
+            <!--Фильтр-->                
+            @Html.Partial("Filter", Model.filter)
+        </div>
+        <!--Основной контент-->
+        <div class="col-xs-9 ">
+            <div class="container-fluid">
+                @Html.Partial("MusicInstrumentsSummary", Model.productList.Instruments)
+            </div>
+            <div class="btn-group pull-right">
+                @Html.PageLinks(Model.productList.PagingInfo, x => Url.Action("ShowListPage",
+                    new { page = x, category = Model.productList.CurrentCategory }))
+            </div>
+        </div>
+    </div>
+</div>

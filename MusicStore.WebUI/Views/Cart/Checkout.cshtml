@@ -1,0 +1,90 @@
+﻿@using MusicStore.Domain.Entities;
+@using System.ComponentModel.DataAnnotations;
+@model OrderDetails
+
+@using (Ajax.BeginForm("Checkout", "Cart", new AjaxOptions
+{
+    HttpMethod = "POST",
+    LoadingElementId = "myPage",
+    InsertionMode = InsertionMode.Replace
+}
+))
+{  
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">×</a>
+        <h3 class="text-center" >Оформление заказа</h3>
+    </div>
+    <div id="modal_body" class="row modal-body">
+          
+        @Html.ValidationSummary()
+        <div class="col-md-5">
+            @Html.HiddenFor(x => x.Id)
+            <h4> Данные о покупателе </h4>                
+                    @Html.LabelFor(model => model.Name, "Имя")                   
+                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control"})
+                    @Html.LabelFor(model => model.Name, "Фамилия")
+                    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                    @Html.LabelFor(model => model.Phone, "Мобильный телефон")
+                    @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                    @Html.LabelFor(model => model.Email, "Электронная почта")
+                    @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+        </div> <!--col-md-6-->
+
+        <div class="col-md-offset-1 col-md-6">
+             <h4 class="text-center">Оплата </h4>
+                 @foreach (var value in Model.Payment.GetTypes())
+                 {
+                    <div>
+                        @Html.RadioButtonFor(x => Model.Payment.PaymentType.Id, value.Id)
+                        @Html.LabelFor(x => Model.Payment.PaymentType.Name, value.Name)
+                    </div>
+                 }
+            <br />
+            <h4 class="text-center">Доставка</h4>
+                @{
+                 Type address_type = Model.Address.GetType();
+                 foreach (var prop in address_type.GetProperties())
+                 {
+                     var displayAttribute = prop.GetCustomAttributes(typeof(DisplayAttribute), false).Cast<DisplayAttribute>().FirstOrDefault();
+                     bool show = (prop.Name == "House" || prop.Name == "Apartment") ? false : true;
+                     if (show)
+                     {
+                        <div class="form-inline ">
+                            <label class="">@displayAttribute.Name</label>
+                            @Html.TextBox(prop.Name, null, new { @class = "form-control" })
+                        </div>
+                     }
+                 }
+                }
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="">Дом</label>
+                    @Html.TextBoxFor(x => Model.Address.House, null, new { @class = "form-control " })
+                </div>
+                <div class="col-md-6">
+                    <label class="">Квартира</label>
+                    @Html.TextBoxFor(x => Model.Address.Apartment, string.Empty, new { @class = "form-control " })
+                </div>
+            </div>
+
+
+
+            @Html.Label("DelivaryCost", string.Format("Стоимость доставки по Украине - {0}", Model.DelivaryCost))
+       </div>  <!--col-md-6-->
+    </div>
+
+    <div class="modal-footer">
+        <label class="pull-left">Стоимость заказа: @Model.TotalSum </label>
+        @Html.HiddenFor(model => model.TotalSum)
+        <input type="submit" class=" btn btn-success" value="Подтвердить заказ" onclick="suc()" />
+        <a href="#" class="btn" data-dismiss="modal">Отмена</a>
+    </div>
+}
+
+@*
+    <script>
+        function suc() {
+            document.location.href = "/SuccessfullOrder";
+        }
+    </script>
+*@

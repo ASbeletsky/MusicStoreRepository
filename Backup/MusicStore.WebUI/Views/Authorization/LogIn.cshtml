@@ -1,0 +1,52 @@
+﻿@using MusicStore.WebUI.Models.Authorization;
+@model LogInViewModel
+
+
+@{
+    Layout = null;
+}
+
+@using (Ajax.BeginForm("LogIn", "Authorization", new AjaxOptions
+         {
+             HttpMethod = "POST",
+             InsertionMode = InsertionMode.Replace,
+             OnSuccess = "SuccessLogin"
+         }))
+{
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title text-center" id="myModalLabel">Вход</h4>
+    </div>
+
+    <div id="Login_modal_body" class="row modal-body">
+        <div class="col-md-6 col-md-offset-1">
+            <div class="">
+                @Html.DisplayNameFor(x => x.Email)
+                @Html.TextBoxFor(x => x.Email, new { @class="form-control"})
+                @Html.ValidationMessageFor(x => x.Email)               
+            </div>  
+            <div>
+                @Html.DisplayNameFor(x => x.Password)
+                @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Password)                
+            </div>             
+        </div>
+
+        <div class="col-md-5">
+
+        </div>
+    </div>
+    
+    <div class="modal-footer">
+        <input type="submit" class="btn btn-primary" value="Войти" />
+        <a href="#" class="btn" data-dismiss="modal">Отмена</a>
+    </div>
+}
+
+<script>
+    function SuccessLogin(result) {
+        window.location.href = result.Url;
+    }
+</script>
+
+

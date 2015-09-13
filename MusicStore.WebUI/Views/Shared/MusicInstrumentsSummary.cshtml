@@ -1,0 +1,37 @@
+﻿@using MusicStore.Domain.Entities
+@using MusicStore.Domain.Helpers;
+@model  IEnumerable<Product>
+
+ <ul class="">
+     @foreach (var prod in Model)
+     {
+        <li class="col-md-3 thumbnail">
+            <div>
+                <div>
+
+                    <div class="popular_product-img" style="margin-bottom:0px">
+                        <div class="popular_product-img-inner image-img-inner-200">
+                            <a href="@Url.Action("Index", "Product", new { id = prod.Id })"><img class="image-centering-img " src="@prod.Image_path" style="height:200px" /></a>
+                        </div>
+                    </div>
+                    <div><a href="@Url.Action("Index", "Product", new { id = prod.Id })" class="center-block"> @prod.General.Name </a></div>
+                    <div class="container-fluid">
+
+                        <div class="col-md-7 alert alert-warning price-uah">@prod.General.Price.ToString().ToPrice()</div>
+                        <!--<div class="col-lg-offset-4 col-md-3 btn btn-lg btn-success "><b class="glyphicon glyphicon-shopping-cart"></b></div>-->
+                        @using (Html.BeginForm("AddToCart", "Cart"))
+                        {
+                            <div class="col-lg-offset-2 col-md-2  ">
+                                @Html.Hidden("id", prod.Id)
+                                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                                <input type="submit" class=" btn btn-lg btn-success " value="+" />
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </li>
+     }
+     
+</ul>
+

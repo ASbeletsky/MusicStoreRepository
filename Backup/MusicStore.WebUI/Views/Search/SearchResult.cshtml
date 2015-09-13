@@ -1,0 +1,12 @@
+﻿@using MusicStore.Domain.Entities
+@model IEnumerable<Product>
+
+@{
+    ViewBag.Title = "Результаты поиска";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<h4>По вашему запросу найдено:</h4>
+
+<div>
+    @Html.Partial("MusicInstrumentsSummary", Model)
+</div>

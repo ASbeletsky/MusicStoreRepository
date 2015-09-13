@@ -1,0 +1,66 @@
+﻿
+<div class="navbar navbar-default navbar-static-top my_header" style="margin-bottom:20px;">
+    <div class="container header_loyaut">
+        <div class="collapse navbar-collapse " style="padding-left:0px; padding-right:0px;">
+            <div class="row">
+                <ul class="nav">
+                    <!--Левая часть-->
+                    <li class="col-lg-4 col-md-4 ">
+                        <div class="row">
+                            <ul class="nav nav-justified ">
+                                <!--Логотип магазина-->
+                                <li class="">
+                                    <div class=" navbar-header" style="padding-top:7px; padding-right:7px;">
+                                        <a class=" navbar-brand no_pading" href="/">
+                                            <img alt="Brand" src="~/Content/Images/brand.jpg" height="60" />
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="divider-vertical" style="padding-right:10px;"></li>
+                                <li class="btn-group" style="width:auto; padding-top:15px; padding-bottom:11px; padding-top:1px; padding-right:10px;">
+                                    <div>
+                                        @Html.Action("CitySelect", "Nav")
+                                    </div>
+                                </li>
+                                <li class="divider-vertical" style="padding-right:10px;"></li>
+                            </ul>
+                        </div>
+
+                    </li>
+
+                    <!--Центр-->
+
+                    <li class=" col-lg-6 col-md-6">
+                        <!--Форма поиска-->
+                        <div class="row">
+                            <div class="nav nav-justified">
+                                @Html.Action("Search", "Search")
+                            </div>
+                        </div>
+                    </li>
+
+                    <!--Правая часть-->
+
+                    <li class=" col-lg-2 col-md-2">
+                        <!--Авторизация и корзина-->
+                        <div class="row">
+                            <ul class="nav nav-justified">
+                                <li class="divider-vertical"></li>
+                                    @Html.Partial("_LoginPartial")
+                                <li class="divider-vertical"></li>
+                                <li>
+                                    <div style="padding-top:8px;">
+                                        <a href="@Url.Action("Index", "Cart", new { Request.Url.AbsolutePath})" style="padding-bottom: 1px;">
+                                            <img alt=" cart" src="~/Content/Images/cart.png" height="50" width="50" />
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

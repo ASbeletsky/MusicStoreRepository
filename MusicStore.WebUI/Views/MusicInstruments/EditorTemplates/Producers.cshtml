@@ -1,0 +1,8 @@
+﻿@using MusicStore.WebUI.Models.MusicInstruments.Filter
+@model ProducerVM
+
+@Html.HiddenFor(x => x.Id)
+@Html.HiddenFor(x => x.Name)
+
+@Html.CheckBoxFor(x => x.IsChecked)
+@Html.DisplayFor(x => x.Name)

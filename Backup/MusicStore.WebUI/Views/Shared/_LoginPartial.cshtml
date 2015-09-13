@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNet.Identity
+<li class="btn-group" style="padding-top:15px; padding-bottom:11px">
+    @if (Request.IsAuthenticated)
+    {
+            <div>
+                @Html.ActionLink(User.Identity.GetUserName(), "EditUserInfo", "Account")
+            </div>
+            <div>
+                @Html.ActionLink("Выход", "LogOut", "Authorization", new { returnUrl = Request.Url.PathAndQuery }, null)
+            </div>
+    }
+    else
+    {
+        <div>
+            <img alt="Login" src="~/Content/Images/login_icon.png" height="25" width="25" />
+            <a data-target="#LoginModal" data-toggle="modal">Вход</a>
+        </div>
+        <div>
+            <a data-target="#RegisterModal" data-toggle="modal">Регистрация</a>
+        </div>
+    }
+</li>
